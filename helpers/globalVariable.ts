@@ -1,0 +1,1 @@
+export const apiUrl = 'https://storytime-api.strapi.timedoor-js.web.id/api/'

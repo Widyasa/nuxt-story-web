@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <button class="btn" :class="btnClass">{{btnTitle}}</button>
+  <button class="btn" :class="btnClass">{{btnTitle}} <slot></slot></button>
 </template>
 
 <style scoped>
