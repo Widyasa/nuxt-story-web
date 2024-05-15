@@ -13,6 +13,6 @@ import Hero_section from "~/components/sections/hero_section.vue";
 
 <style scoped>
 header {
-  height: 90vh;
+  height: 83vh;
 }
 </style>
