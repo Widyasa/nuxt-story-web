@@ -4,12 +4,18 @@ import {apiUrl} from "~/helpers/globalVariable";
 
 export const storyStore = defineStore('storyStore', {
     state : () => ({
-        storyList : []
+        storyList : []  ,
+        pages: ref(1)
     }),
     actions : {
         async getStory() {
-            const {data} = await axios.get(apiUrl + 'stories')
-            this.storyList = data.data
+            const {data} = await axios.get(apiUrl + `stories?keyword&author&page=${this.pages}`)
+            if (this.pages > 1) {
+
+                data.data.forEach(item => this.storyList.push(item))
+            } else {
+                this.storyList = data.data
+            }
         }
     }
 })
