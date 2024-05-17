@@ -28,4 +28,10 @@ const props = defineProps({
   border: 1px solid #343434;
   transition-duration: 200ms;
 }
+.btn-main:active{
+  color: #fff !important;
+}
+.btn-second:active {
+  color: #343434 !important;
+}
 </style>
