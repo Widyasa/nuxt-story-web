@@ -25,6 +25,16 @@ export const storyStore = defineStore('storyStore', {
                 await this.getStory()
             }
 
-        }
+        },
+        async sortNewestData () {
+              this.storyList.sort(function (a,b) {return b.createdAt.localeCompare(a.createdAt)})
+        },
+        async sortAsc () {
+              this.storyList.sort(function (a,b) {return a.title.localeCompare(b.title)})
+        },
+        async sortDesc () {
+              this.storyList.sort(function (a,b) {return b.title.localeCompare(a.title)})
+        },
+
     }
 })
