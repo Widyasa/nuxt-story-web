@@ -6,7 +6,7 @@ import BaseButton from "~/components/ui/BaseButton.vue";
 <template>
   <nav class="navbar navbar-expand-lg ">
     <div class="container">
-      <NuxtLink to='/' class="navbar-brand" href="#">
+      <NuxtLink to='/' class="navbar-brand">
         <img src="../public/logo.svg" alt="">
       </NuxtLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

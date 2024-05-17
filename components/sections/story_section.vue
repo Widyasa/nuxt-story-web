@@ -1,20 +1,14 @@
-<script setup lang="ts">
+<script setup lang="js">
 
 import SearchStory from "~/components/ui/SearchStory.vue";
 import SelectOptionStory from "~/components/ui/SelectOptionStory.vue";
 import CardStory from "~/components/ui/CardStory.vue";
 import {imageUrl} from "~/helpers/globalVariable";
 import BaseButton from "~/components/ui/BaseButton.vue";
+import {formattedDate} from "~/helpers/DateFormat.ts";
 const stories = storyStore()
 stories.getStory()
-function formattedDate(timestamp: string): string {
-  const dateObject = new Date(timestamp);
-  const year = dateObject.getFullYear();
-  const month = String(dateObject.getMonth() + 1).padStart(2, '0');
-  const day = String(dateObject.getDate()).padStart(2, '0');
-  const date = `${year}-${month}-${day}`;
-  return date;
-}
+
 const pagination = () => {
   stories.$state.pages++
   stories.getStory()
@@ -44,6 +38,7 @@ const pagination = () => {
             :title-story="item.title"
             :image-description="imageUrl + item.cover_image.name"
             :content-image="imageUrl + item.cover_image.url"
+            :id-story="item.id"
         />
       </div>
       <div class="mt-5 d-flex justify-content-center">

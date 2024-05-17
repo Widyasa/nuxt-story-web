@@ -6,7 +6,8 @@ export const storyStore = defineStore('storyStore', {
     state : () => ({
         storyList : [],
         pages: ref(1),
-        keyword: ref('')
+        keyword: ref(''),
+        story: {}
     }),
     actions : {
         async getStory() {
@@ -23,6 +24,12 @@ export const storyStore = defineStore('storyStore', {
             if (this.keyword === '') {
                 await this.getStory()
             }
+
+        },
+        async getStoryById(id:String) {
+            const {data} = await axios.get(apiUrl + `stories/${id}`)
+            this.story = data.data
+            console.log(data.data)
 
         },
         async sortNewestData () {
