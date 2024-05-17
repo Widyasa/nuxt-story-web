@@ -11,6 +11,7 @@ import Story_section from "~/components/sections/story_section.vue";
     <Hero_section />
   </header>
   <Story_section />
+  <Footer />
 </template>
 
 <style scoped>

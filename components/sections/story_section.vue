@@ -46,7 +46,9 @@ const pagination = () => {
             :content-image="imageUrl + item.cover_image.url"
         />
       </div>
-      <BaseButton btn-title="Load More" btn-class="btn-main" @click="pagination"/>
+      <div class="mt-5 d-flex justify-content-center">
+        <BaseButton btn-title="Load More" btn-class="btn-main" @click="pagination"/>
+      </div>
     </div>
   </section>
 </template>

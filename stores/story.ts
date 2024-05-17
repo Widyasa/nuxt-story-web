@@ -10,16 +10,15 @@ export const storyStore = defineStore('storyStore', {
     }),
     actions : {
         async getStory() {
-            const {data} = await axios.get(apiUrl + `stories?keyword=${this.keyword}&author&page=${this.pages}`)
+            const {data} = await axios.get(apiUrl + `stories?&page=${this.pages}`)
             if (this.pages > 1) {
-
                 data.data.forEach(item => this.storyList.push(item))
             } else {
                 this.storyList = data.data
             }
         },
         async searchStory() {
-            const {data} = await axios.get(apiUrl + `stories?keyword=${this.keyword}&author&page`)
+            const {data} = await axios.get(apiUrl + `stories?keyword=${this.keyword}`)
             this.storyList = data.data
             if (this.keyword === '') {
                 await this.getStory()
