@@ -27,7 +27,12 @@ const pagination = () => {
       </div>
     </div>
     <div class="mt-5">
-      <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 gy-4">
+      <div v-if="stories.storyList.length <= 0">
+        <div class="d-flex justify-content-center mt-5">
+          <Spinner />
+        </div>
+      </div>
+      <div v-else class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 gy-4">
         <CardStory
             v-for="(item, index) in stories.storyList"
             :key="index"

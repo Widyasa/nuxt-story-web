@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script setup lang="js">
 import {storyStore} from "~/stores/story";
-import {formattedDate} from "../../helpers/DateFormat";
 import {imageUrl} from "~/helpers/globalVariable";
+import {formattedDate} from "../../helpers/DateFormat.ts";
 
 const stories = storyStore()
 const route = useRoute()
-const routeId:String = route.params.id
+const routeId = route.params.id
 stories.getStoryById(routeId)
 </script>
 
@@ -16,7 +16,7 @@ stories.getStoryById(routeId)
   </div>
   <div class="">
 <!--    <img :src="imageUrl + stories.story.cover_image.url" :alt="stories.story.cover_image.name" class="img-detail-story">-->
-    <img :src="imageUrl+stories.story.cover_image.url" :alt="stories.story.cover_image.name" class="img-detail-story" />
+    <img v-if="stories.story.cover_image" :src="imageUrl+stories.story.cover_image.url" :alt="stories.story.cover_image.name" class="img-detail-story" />
    <div v-html="stories.story.content" class="mt-5"></div>
   </div>
 
