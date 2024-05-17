@@ -29,8 +29,6 @@ export const storyStore = defineStore('storyStore', {
         async getStoryById(id:String) {
             const {data} = await axios.get(apiUrl + `stories/${id}`)
             this.story = data.data
-            console.log(data.data)
-
         },
         async sortNewestData () {
               this.storyList.sort(function (a,b) {return b.createdAt.localeCompare(a.createdAt)})
