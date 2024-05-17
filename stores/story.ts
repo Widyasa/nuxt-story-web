@@ -4,7 +4,7 @@ import {apiUrl} from "~/helpers/globalVariable";
 
 export const storyStore = defineStore('storyStore', {
     state : () => ({
-        storyList : []  ,
+        storyList : [],
         pages: ref(1),
         keyword: ref('')
     }),
@@ -14,7 +14,7 @@ export const storyStore = defineStore('storyStore', {
             if (this.pages > 1) {
                 data.data.forEach(item => this.storyList.push(item))
             } else {
-                this.storyList = data.data
+                    this.storyList = data.data
             }
         },
         async searchStory() {
