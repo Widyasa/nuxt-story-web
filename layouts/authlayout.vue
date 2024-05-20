@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+console.log(route)
 const routeName = route.name
 </script>
 

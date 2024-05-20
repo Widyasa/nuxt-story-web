@@ -13,7 +13,6 @@ const login = authStore()
 console.log(login.$state.isLogin)
 
 const signIn = async () => {
-  const fd = new FormData();
   try {
     const res = await login.login(loginInput)
     console.log(res)
