@@ -1,13 +1,17 @@
 <script setup lang="ts">
-
-
-
 import BaseInput from "~/components/ui/BaseInput.vue";
 import BaseButton from "~/components/ui/BaseButton.vue";
-
 definePageMeta({
   layout:'authlayout'
 })
+const loginInput = reactive({
+  email: '',
+  password: ''
+})
+const login = authStore()
+const signIn = async () => {
+
+}
 </script>
 
 <template>
