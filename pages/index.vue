@@ -2,9 +2,12 @@
 
 import Hero_section from "~/components/sections/hero_section.vue";
 import Story_section from "~/components/sections/story_section.vue";
+import {authStore} from "~/stores/auth";
 definePageMeta({
   layout: 'homelayouts'
 })
+const auth = authStore()
+console.log(auth.$state.isLogin)
 </script>
 
 <template>
