@@ -29,7 +29,7 @@ const register = authStore()
 const signUp = async () => {
   try {
     const res = await register.register(registerInput)
-    return navigateTo('/profile')
+    return navigateTo('/user')
   } catch (e) {
     console.error(e)
   }

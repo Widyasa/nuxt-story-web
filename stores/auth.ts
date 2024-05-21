@@ -18,7 +18,7 @@ export const authStore = defineStore('useAuthStore', {
                 this.loginOutput = data.data
                 this.isLogin = true
                 Cookies.set('token', this.loginOutput.jwt)
-                Cookies.set('user', JSON.stringify(this.loginOutput.user))
+                Cookies.set('user', this.loginOutput.user.name)
             } catch (e) {
                 console.log(e)
             }

@@ -18,7 +18,7 @@ const signIn = async () => {
     const res = await login.login(loginInput)
     console.log(res)
     console.log(login.$state.isLogin)
-    return navigateTo('/profile')
+    return navigateTo('/user')
   } catch (error) {
     console.log(error)
   }
