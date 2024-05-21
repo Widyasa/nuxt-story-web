@@ -2,7 +2,16 @@
 export default defineNuxtConfig({
 
   devtools: { enabled: true },
-  css: ['@/assets/main.css', 'bootstrap/dist/css/bootstrap.min.css'],
+  css: ['@/assets/main.css', 'bootstrap/dist/css/bootstrap.min.css','@fortawesome/fontawesome-svg-core/styles.css'],
+  app:{
+    head:{
+      script:[{
+        src:"https://kit.fontawesome.com/f1a55980af.js",
+        crossorigin:"anonymous",
+      }]
+    }
+  },
+
   modules: [
     '@pinia/nuxt',
       // 'cookie-universal-nuxt',
