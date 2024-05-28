@@ -1,12 +1,14 @@
 import axios from "axios";
 import {apiUrl} from "~/helpers/globalVariable";
 import Cookies from "js-cookie";
+import {useLocalStorage} from "@vueuse/core";
 
 export const authStore = defineStore('useAuthStore', {
     state: () => ({
         loginOutput:{},
         isLogin: false
     }),
+    persist:true,
     actions: {
         async login (loginData:any) {
             try {
@@ -18,6 +20,7 @@ export const authStore = defineStore('useAuthStore', {
                 this.loginOutput = data.data
                 this.isLogin = true
                 Cookies.set('token', this.loginOutput.jwt)
+                Cookies.set('user', this.loginOutput.user.name)
                 Cookies.set('user', this.loginOutput.user.name)
             } catch (e) {
                 console.log(e)
@@ -33,7 +36,6 @@ export const authStore = defineStore('useAuthStore', {
                 this.isLogin = true
                 console.log(data.data)
                 Cookies.set('token', this.loginOutput.jwt)
-                Cookies.set('user', JSON.stringify(this.loginOutput.user))
             } catch (e) {
                 console.error(e)
             }

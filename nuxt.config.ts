@@ -14,8 +14,18 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
-      // 'cookie-universal-nuxt',
+    '@vee-validate/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    // 'cookie-universal-nuxt',
       // '@nuxtjs/axios',
-
   ],
+  veeValidate: {
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
 })

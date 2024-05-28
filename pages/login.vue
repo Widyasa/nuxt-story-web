@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BaseInput from "~/components/ui/BaseInput.vue";
 import BaseButton from "~/components/ui/BaseButton.vue";
+import Cookies from "js-cookie";
 definePageMeta({
   layout:'authlayout',
   middleware:'is-login'
@@ -16,8 +17,6 @@ console.log(login.$state.isLogin)
 const signIn = async () => {
   try {
     const res = await login.login(loginInput)
-    console.log(res)
-    console.log(login.$state.isLogin)
     return navigateTo('/user')
   } catch (error) {
     console.log(error)
@@ -30,8 +29,8 @@ const changeInputType = () => {
     inputType.value = 'password'
   }
 }
+const auth = authStore()
 </script>
-
 <template>
   <form @submit.prevent="signIn" class="mt-4 d-flex flex-column gap-3">
     <BaseInput v-model="loginInput.identifier" input-name="email/username" input-placeholder="Enter email/username" input-title="Email/Username" input-type="text" />

@@ -11,7 +11,7 @@ const props = defineProps({
 <template>
   <div class="d-flex flex-column gap-1 w-100">
     <label :for="props.inputName">{{props.inputTitle}}</label>
-    <input :type="props.inputType" class="form-control" :placeholder="props.inputPlaceholder" :value="props.modelValue" @input="$emit('update:modelValue', $event.target.value)">
+    <input :name="props.inputName" :type="props.inputType" class="form-control" :placeholder="props.inputPlaceholder" :value="props.modelValue" @input="$emit('update:modelValue', $event.target.value)">
   </div>
 </template>
 

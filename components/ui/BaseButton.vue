@@ -28,6 +28,12 @@ const props = defineProps({
   border: 1px solid #343434;
   transition-duration: 200ms;
 }
+.btn-second-danger {
+  background: #ffffff;
+  color: #ff3535;
+  border: 1px solid #ff3535;
+  transition-duration: 200ms;
+}
 .btn-main:active{
   color: #fff !important;
 }

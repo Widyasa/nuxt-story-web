@@ -1,9 +1,7 @@
 <script setup lang="ts">
 
 import NavProfile from "~/components/ui/NavProfile.vue";
-definePageMeta({
-  middleware: 'auth',
-})
+
 </script>
 
 <template>

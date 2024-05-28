@@ -5,6 +5,7 @@
 import BaseInput from "~/components/ui/BaseInput.vue";
 import BaseButton from "~/components/ui/BaseButton.vue";
 import auth from "~/middleware/auth";
+import * as yup from 'yup'
 
 definePageMeta({
   layout:'authlayout',
@@ -22,18 +23,8 @@ const tempPassword = reactive({
 })
 const passwordInputType = ref('password')
 const confirmPasswordInputType = ref('password')
-if(tempPassword.password === tempPassword.confirmPassword){
-  registerInput.password = tempPassword.password
-}
+
 const register = authStore()
-const signUp = async () => {
-  try {
-    const res = await register.register(registerInput)
-    return navigateTo('/user')
-  } catch (e) {
-    console.error(e)
-  }
-}
 const changePasswordType = (id:string) => {
   if (id === '1') {
     if(passwordInputType.value === 'password') {
@@ -50,13 +41,43 @@ const changePasswordType = (id:string) => {
   }
 
 }
+const schema = yup.object({
+  name: yup.string(),
+  username: yup.string().min(3),
+  email: yup.string().email(),
+  password: yup.string().min(6)
+})
+const { defineField, errors, handleSubmit} = useForm({
+  validationSchema: schema
+})
+const [name, nameAttrs] = defineField('name')
+const [username, usernameAttrs] = defineField('username')
+const [email, emailAttrs] = defineField('email')
+const [password, passwordAttrs] = defineField('password')
+  const signUp = handleSubmit(values => {
+    register.register(values)
+    return navigateTo('/user')
+  })
+
+
+
+
 </script>
 
 <template>
   <form @submit.prevent="signUp" class="mt-4 d-flex flex-column gap-3">
-    <BaseInput v-model="registerInput.name" input-name="name" input-placeholder="Enter name" input-title="Name" input-type="text" />
-    <BaseInput  v-model="registerInput.username" input-name="username" input-placeholder="Enter username" input-title="Username" input-type="text" />
-    <BaseInput v-model="registerInput.email" input-name="email" input-placeholder="Enter email" input-title="Email" input-type="email" />
+    <div class="">
+      <BaseInput v-bind="nameAttrs" v-model="name" input-name="name" input-placeholder="Enter name" input-title="Name" input-type="text" />
+      <p class="text-danger">{{errors.name}}</p>
+    </div>
+    <div class="">
+      <BaseInput v-bind="usernameAttrs"  v-model="username" input-name="username" input-placeholder="Enter username" input-title="Username" input-type="text" />
+      <p class="text-danger">{{errors.username}}</p>
+    </div>
+    <div class="">
+      <BaseInput v-bind="emailAttrs" v-model="email" input-name="email" input-placeholder="Enter email" input-title="Email" input-type="email" />
+      <p class="text-danger">{{errors.email}}</p>
+    </div>
     <div class="position-relative">
       <div class="position-absolute z-3 eye-icon">
         <svg @click="changePasswordType('1')" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +90,8 @@ const changePasswordType = (id:string) => {
         </svg>
       </div>
       <div class="position-relative">
-        <BaseInput v-model="tempPassword.password" input-name="password" input-placeholder="Enter password" input-title="Password" :input-type="passwordInputType" />
+        <BaseInput v-bind="passwordAttrs" v-model="password" input-name="password" input-placeholder="Enter password" input-title="Password" :input-type="passwordInputType" />
+        <p class="text-danger">{{errors.password}}</p>
       </div>
     </div>
     <div class="position-relative">

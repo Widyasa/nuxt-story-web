@@ -9,13 +9,14 @@ const auth = authStore()
   <nav class="navbar navbar-expand-lg ">
     <div class="container">
       <NuxtLink to='/' class="navbar-brand">
+        {{auth.isLogin}}
         <img src="../public/logo.svg" alt="">
       </NuxtLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav gap-3" v-show="token === undefined">
+        <ul class="navbar-nav gap-3" v-show="!auth.isLogin">
           <li class="nav-item">
             <NuxtLink to="/register">
               <BaseButton btn-title="Register" btn-class="btn-second" />
@@ -27,7 +28,7 @@ const auth = authStore()
             </NuxtLink>
           </li>
         </ul>
-        <ul class="navbar-nav gap-3" v-show="token !== undefined">
+        <ul class="navbar-nav gap-3" v-show="auth.isLogin">
           <li class="nav-item">
             <NuxtLink to="/user">
               <BaseButton btn-title="" btn-class="btn-main flex gap-3">

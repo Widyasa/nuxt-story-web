@@ -7,7 +7,6 @@ definePageMeta({
   layout: 'homelayouts'
 })
 const auth = authStore()
-console.log(auth.$state.isLogin)
 </script>
 
 <template>

@@ -2,7 +2,8 @@
 import BaseButton from "~/components/ui/BaseButton.vue";
 
 definePageMeta({
-  layout:'userlayouts'
+  layout:'userlayouts',
+  middleware:'auth'
 })
 </script>
 
@@ -15,8 +16,6 @@ definePageMeta({
         Edit Profile
       </BaseButton>
     </div>
-
-
   </div>
 </template>
 
