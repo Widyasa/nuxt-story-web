@@ -83,7 +83,9 @@ export const storyStore = defineStore('storyStore', {
         },
         async deleteStory (id:any) {
             try {
-                const response = await axios.delete(apiUrl + `stories/${id}`)
+                const response = await $fetch(apiUrl + `stories/${id}`,{
+                    method:'DELETE'
+                })
                 await this.getStoryByAuthor()
             } catch (e) {
                 console.error(e)

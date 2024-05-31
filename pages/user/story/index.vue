@@ -34,7 +34,7 @@ const getId = (idTable:string) => {
             <td>{{formattedDate(item.updatedAt)}}</td>
             <td>
               <div class="flex gap-3">
-                  <NuxtLink to="/">
+                  <NuxtLink :to="{path : `/user/story/${item.id}/edit`}">
                     <BaseButton btn-title="Edit" btn-class="btn-second" />
                   </NuxtLink>
                     <BaseButton @click="getId(item.id)" data-bs-toggle="modal" data-bs-target="#deleteStoryModal" btn-title="Delete" btn-class="btn-second-danger ms-3" />

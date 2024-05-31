@@ -18,7 +18,7 @@ const story = storyStore()
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button @click="story.deleteStory(props.id)" type="button" data-bs-dismiss="modal" class="btn btn-primary">Logout</button>
+          <button @click="story.deleteStory(props.id)" type="button" data-bs-dismiss="modal" class="btn btn-primary">Delete</button>
         </div>
       </div>
     </div>
