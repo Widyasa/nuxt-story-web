@@ -6,8 +6,13 @@ import {useLocalStorage} from "@vueuse/core";
 
 export default defineNuxtRouteMiddleware((to, from) => {
     const auth = authStore()
-    auth.isLogin = token.value !== undefined;
-   if (!auth.isLogin) {
-       return navigateTo('/login')
-   }
+    if (token.value !== undefined) {
+        auth.isLogin = true
+    }
+    if (!auth.isLogin) {
+        return navigateTo('/login')
+    }
+    if (token.value !== undefined) {
+        auth.isLogin = true
+    }
 })

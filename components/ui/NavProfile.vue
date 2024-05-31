@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import BaseButton from "~/components/ui/BaseButton.vue";
 </script>
 
 <template>
@@ -23,7 +24,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
         Bookmark
       </NuxtLink>
     </div>
-
+    <BaseButton btn-title="Logout" btn-class="btn-second-danger mt-2 w-100" data-bs-toggle="modal" data-bs-target="#logoutModal"/>
   </div>
 </template>
 
@@ -31,6 +32,7 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 .nav-profile-wrapper{
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
   padding: 0;
+  height: fit-content;
 }
 .nav-profile:last-child .nav-profile-link{
   border-bottom: 0;

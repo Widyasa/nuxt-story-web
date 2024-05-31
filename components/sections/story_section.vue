@@ -7,7 +7,8 @@ import {imageUrl} from "~/helpers/globalVariable";
 import BaseButton from "~/components/ui/BaseButton.vue";
 import {formattedDate} from "~/helpers/DateFormat.ts";
 const stories = storyStore()
-stories.getStory()
+  stories.getStory()
+
 
 const pagination = () => {
   stories.$state.pages++
@@ -27,6 +28,7 @@ const pagination = () => {
       </div>
     </div>
     <div class="mt-5">
+<!--      <p>{{stories.storyList}}</p>-->
       <div v-if="stories.storyList.length <= 0">
         <div class="d-flex justify-content-center mt-5">
           <Spinner />
@@ -36,15 +38,16 @@ const pagination = () => {
         <CardStory
             v-for="(item, index) in stories.storyList"
             :key="index"
-            :category-story="item.category.name"
+            :category-story="item.category?.name"
             :date-story="formattedDate(item.createdAt)"
-            :author-story="item.author.name"
+            :author-story="item.author?.name"
             :content-story="item.content"
             :title-story="item.title"
-            :image-description="imageUrl + item.cover_image.name"
-            :content-image="imageUrl + item.cover_image.url"
+            :image-description="item.cover_image?.name"
+            :content-image="item.cover_image?.url"
             :id-story="item.id"
         />
+
       </div>
       <div class="mt-5 d-flex justify-content-center">
         <BaseButton btn-title="Load More" btn-class="btn-main" @click="pagination"/>

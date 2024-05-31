@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {imageUrl} from "~/helpers/globalVariable";
+
 const props = defineProps({
   contentImage : {required: true, type:String},
   imageDescription : {required: true, type:String},
@@ -16,7 +18,8 @@ const props = defineProps({
   <div class="col">
     <NuxtLink :to="{path: `/story/${props.idStory}`}" class="link-story-wrapper">
       <div class="card-story card h-100">
-        <img :src="props.contentImage" alt="" class="card-img-top w-100 card-story-img">
+        <img v-if="props.contentImage" :src="imageUrl + props.contentImage" :alt="imageUrl + props.imageDescription" class="card-img-top w-100 card-story-img">
+        <img v-else src="https://placehold.co/600x340?text=Image+Not+Found" alt="">
         <div class="card-body">
           <h2 class="fs-5 story-title">{{props.titleStory}}</h2>
           <p class="story-content">{{props.contentStory}}</p>

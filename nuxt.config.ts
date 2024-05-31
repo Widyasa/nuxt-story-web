@@ -12,13 +12,7 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: [
-    '@pinia/nuxt',
-    '@vee-validate/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
-    // 'cookie-universal-nuxt',
-      // '@nuxtjs/axios',
-  ],
+  modules: ['@pinia/nuxt', '@vee-validate/nuxt', '@pinia-plugin-persistedstate/nuxt', "nuxt-tiptap-editor"],
   veeValidate: {
     autoImports: true,
     componentNames: {
@@ -27,5 +21,8 @@ export default defineNuxtConfig({
       FieldArray: 'VeeFieldArray',
       ErrorMessage: 'VeeErrorMessage',
     },
+  },
+  tiptap: {
+    prefix: "Tiptap"
   },
 })

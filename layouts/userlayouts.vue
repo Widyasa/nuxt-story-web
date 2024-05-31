@@ -1,7 +1,12 @@
 <script setup lang="ts">
 
 import NavProfile from "~/components/ui/NavProfile.vue";
-
+import {token} from "~/helpers/globalVariable";
+import axios from "axios";
+const auth = authStore()
+if (auth.loginOutput.token || token.value) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token.value}`
+}
 </script>
 
 <template>
@@ -17,6 +22,7 @@ import NavProfile from "~/components/ui/NavProfile.vue";
     </div>
   </div>
   <Footer />
+  <LogoutModal />
 </template>
 
 <style scoped>

@@ -6,7 +6,7 @@ import {formattedDate} from "../../helpers/DateFormat.ts";
 const stories = storyStore()
 const route = useRoute()
 const routeId = route.params.id
-stories.getStoryById(routeId)
+await stories.getStoryById(routeId)
 </script>
 
 <template>

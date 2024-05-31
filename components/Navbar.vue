@@ -46,7 +46,8 @@ const auth = authStore()
                     </g>
                   </g>
                 </svg>
-                {{userLogin}}
+<!--                {{userLogin}}-->
+                {{auth.loginOutput.user?.name}}
               </BaseButton>
             </NuxtLink>
           </li>
